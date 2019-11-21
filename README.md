@@ -115,6 +115,11 @@ And voila! You now have your very own instance of an app running Node.js runtime
 
 This command will start your application. When your app has started, your console will print that your `Express server listening on port 3000`.
 
+8. To run the simple sample code,
+
+  ```
+  node app-s.js
+  ```
 
 ## Decomposition Instructions
 
