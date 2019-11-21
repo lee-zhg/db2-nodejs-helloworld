@@ -1,63 +1,92 @@
-# Db2 Warehouse on Cloud -  Node.js Hello World Sample
+# Db2 on Cloud -  Node.js Hello World Sample
 
-The code in this repository provides a simple implementation of an app running on Node.js runtime demonstrating how to connect Node.js applications to the IBM Db2 Warehouse on Cloud service.
+The code in this repository provides a simple implementation of an app running on Node.js runtime demonstrating how to connect Node.js applications to the IBM Db2 on Cloud service.
 
-You can bind a IBM Db2 Warehouse on Cloud service instance to an app running on Node.js runtime in the IBM Cloud (Bluemix) and then work with the data in the Db2 database (relational SQL database). The Bluemix Node.js runtime will automatically lay down native driver dependencies when you have a Db2 Service instance bound to your app. The sample illustrated here uses express and jade node modules.
+You can bind a IBM Db2 on Cloud service instance to an app running on Node.js runtime in the IBM Cloud (IBM Cloud) and then work with the data in the Db2 database (relational SQL database). The IBM Cloud Node.js runtime will automatically lay down native driver dependencies when you have a Db2 Service instance bound to your app. The sample illustrated here uses express and jade node modules.
 
-For issues that you encounter with this service, go to [**Get help**](https://developer.ibm.com/bluemix/) in the Bluemix developer community.
+For issues that you encounter with this service, go to [**Get help**](https://developer.ibm.com/IBM Cloud/) in the IBM Cloud developer community.
 
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy)
+[![Deploy to IBM Cloud](https://IBM Cloud.net/deploy/button.png)](https://IBM Cloud.net/deploy)
 
-![Bluemix Deployments](https://deployment-tracker.mybluemix.net/stats/6dc62259729f4ccc57f616d7f1e7315b/badge.svg)
+![IBM Cloud Deployments](https://deployment-tracker.myIBM Cloud.net/stats/6dc62259729f4ccc57f616d7f1e7315b/badge.svg)
 
-## Running the app on Bluemix
+## Create table EMPLOYEE in the default schema
 
-1. If you do not already have a Bluemix account, [sign up here](https://console.ng.bluemix.net/registration/)
+Table `EMPLOYEE` must be created in the default schema, for example `HHL74579`. It can be created by `LOAD` file `data.csv`. So, you don't have to create the table manually.
+
+> Note, can be a little trick when loading data. Be patient.
+
+## 2 main sample codes
+
+  * app.js
+  * app-s.js
+
+> Note: Both should run without modifying the connection to your database service.
+
+To run `node app.js`, file `app.js` and `routes/index.js` must be modified.
+  * DATABASE
+  * HOSTNAME
+  * UID
+  * PWD
+  * PORT
+  * Schema
+
+To run `nodse app-s.js`, file `app-s.js` must be modified.
+  * DATABASE
+  * HOSTNAME
+  * UID
+  * PWD
+  * PORT
+  * Schema
+
+## Running the app on IBM Cloud
+
+1. If you do not already have a IBM Cloud account, [sign up here](https://console.ng.IBM Cloud.net/registration/)
 
 2. Download and install the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases) tool
 
 3. Clone the app to your local environment from your terminal using the following command:
 
   ```
-  git clone https://github.com/IBM-Bluemix/dashdb-nodejs-helloworld.git
+  git clone https://github.com/IBM-IBM Cloud/dashdb-nodejs-helloworld.git
   ```
 
 4. `cd` into this newly created directory
 
 5. Open the `manifest.yml` file and change the `host` value to something unique.
 
-  The host you choose will determinate the subdomain of your application's URL:  `<host>.mybluemix.net`
+  The host you choose will determinate the subdomain of your application's URL:  `<host>.myIBM Cloud.net`
 
-6. Connect to Bluemix in the command line tool and follow the prompts to log in.
+6. Connect to IBM Cloud in the command line tool and follow the prompts to log in.
 
   ```
-  $ cf api https://api.ng.bluemix.net
+  $ cf api https://api.ng.IBM Cloud.net
   $ cf login
   ```
 
-7. Create a Db2 Warehouse on Cloud service instance in Bluemix.
+7. Create a Db2 on Cloud service instance in IBM Cloud.
 
   ```
   $ cf create-service dashDB Entry dashDB-nodesample
   ```
 
-8. Push the app to Bluemix.
+8. Push the app to IBM Cloud.
 
   ```
   $ cf push
   ```
 
-And voila! You now have your very own instance of an app running Node.js runtime and connecting and querying the dashDB service on Bluemix.
+And voila! You now have your very own instance of an app running Node.js runtime and connecting and querying the dashDB service on IBM Cloud.
 
 ## Run the app locally
-1. If you do not already have a Bluemix account, [sign up here](https://console.ng.bluemix.net/registration/)
+1. If you do not already have a IBM Cloud account, [sign up here](https://console.ng.IBM Cloud.net/registration/)
 
 2. If you have not already, [download node.js](https://nodejs.org/en/download/) and install it on your local machine.
 
 3. Clone the app to your local environment from your terminal using the following command:
 
   ```
-    git clone https://github.com/IBM-Bluemix/dashdb-nodejs-helloworld.git
+    git clone https://github.com/IBM-IBM Cloud/dashdb-nodejs-helloworld.git
   ```
 
 4. `cd` into this newly created directory
@@ -68,7 +97,7 @@ And voila! You now have your very own instance of an app running Node.js runtime
   npm install
   ```
 
-6. Create a dashDB service using your Bluemix account and replace the corresponding credentials in your app.js file
+6. Create a dashDB service using your IBM Cloud account and replace the corresponding credentials in your app.js file
 
 ```
         db: "BLUDB",
@@ -89,7 +118,7 @@ This command will start your application. When your app has started, your consol
 
 ## Decomposition Instructions
 
-The primary purpose of this demo is to provide a sample implementation of an app running on Node.js runtime demonstrating how to connect Node.js applications to Db2 Warehouse on Cloud service on Bluemix. The relevant code for this integration is located within the `app.js` file.
+The primary purpose of this demo is to provide a sample implementation of an app running on Node.js runtime demonstrating how to connect Node.js applications to Db2 on Cloud service on IBM Cloud. The relevant code for this integration is located within the `app.js` file.
 
 The following components are required to connect Db2 from a Node.js application. The are all described in further detail in this topic.
 
@@ -106,7 +135,7 @@ The package.json contains information about your app and its dependencies. It is
   },
   "name": "dashdbnodesample",
   "version": "0.0.1",
-  "description": "A sample node app for connecting to dashDB service on Bluemix",
+  "description": "A sample node app for connecting to dashDB service on IBM Cloud",
   "dependencies": {
     "cf-deployment-tracker-client": "0.0.8",
     "express": "3.5.x",
@@ -118,7 +147,7 @@ The package.json contains information about your app and its dependencies. It is
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/IBM-Bluemix/dashdb-nodejs-helloworld.git"
+    "url": "https://github.com/IBM-IBM Cloud/dashdb-nodejs-helloworld.git"
   }
 }
 
@@ -129,7 +158,7 @@ The package.json contains information about your app and its dependencies. It is
 
 In your Node.js code, parse the VCAP_SERVICES environment variable to retrieve the database connection information and connect to the database as shown in the following example.
 
-For more information on the structure of the VCAP_SERVICES environment variable see [Getting Started with dashDB Service](http://www.ng.bluemix.net/docs/#services/dashDB/index.html#dashDB)
+For more information on the structure of the VCAP_SERVICES environment variable see [Getting Started with dashDB Service](http://www.ng.IBM Cloud.net/docs/#services/dashDB/index.html#dashDB)
 
 ```
 var app = express();
@@ -188,26 +217,26 @@ exports.listSysTables = function(ibmdb,connString) {
 
 ## Troubleshooting
 
-The primary source of debugging information for your Bluemix app is the logs. To see them, run the following command using the Cloud Foundry CLI:
+The primary source of debugging information for your IBM Cloud app is the logs. To see them, run the following command using the Cloud Foundry CLI:
 
   ```
   $ cf logs dashdbnodesample --recent
   ```
-For more detailed information on troubleshooting your application, see the [Troubleshooting section](https://www.ng.bluemix.net/docs/troubleshoot/tr.html) in the Bluemix documentation.
+For more detailed information on troubleshooting your application, see the [Troubleshooting section](https://www.ng.IBM Cloud.net/docs/troubleshoot/tr.html) in the IBM Cloud documentation.
 
 ## Contribute
-We are more than happy to accept external contributions to this project, be it in the form of issues or pull requests. If you find a bug or want an enhancement to be added to the sample application, please report via the [issues section](https://github.com/IBM-Bluemix/dashdb-nodejs-helloworld/issues) or even better, fork the project and submit a pull request with your fix. Pull requests will be evaulated on an individual basis based on value add to the sample application.
+We are more than happy to accept external contributions to this project, be it in the form of issues or pull requests. If you find a bug or want an enhancement to be added to the sample application, please report via the [issues section](https://github.com/IBM-IBM Cloud/dashdb-nodejs-helloworld/issues) or even better, fork the project and submit a pull request with your fix. Pull requests will be evaulated on an individual basis based on value add to the sample application.
 
 
 ## Privacy Notice
-The dashdb-nodejs-helloworld sample web application includes code to track deployments to Bluemix and other Cloud Foundry platforms. The following information is sent to a [Deployment Tracker](https://github.com/cloudant-labs/deployment-tracker) service on each deployment:
+The dashdb-nodejs-helloworld sample web application includes code to track deployments to IBM Cloud and other Cloud Foundry platforms. The following information is sent to a [Deployment Tracker](https://github.com/cloudant-labs/deployment-tracker) service on each deployment:
 
 * Application Name (application_name)
 * Space ID (space_id)
 * Application Version (application_version)
 * Application URIs (application_uris)
 
-This data is collected from the VCAP_APPLICATION environment variable in IBM Bluemix and other Cloud Foundry platforms. This data is used by IBM to track metrics around deployments of sample applications to IBM Bluemix. Only deployments of sample applications that include code to ping the Deployment Tracker service will be tracked.
+This data is collected from the VCAP_APPLICATION environment variable in IBM IBM Cloud and other Cloud Foundry platforms. This data is used by IBM to track metrics around deployments of sample applications to IBM IBM Cloud. Only deployments of sample applications that include code to ping the Deployment Tracker service will be tracked.
 
 ### Disabling Deployment Tracking
 
